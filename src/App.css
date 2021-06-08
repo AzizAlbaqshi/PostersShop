@@ -34,5 +34,34 @@
   }
   to {
     transform: rotate(360deg);
-  }
+  } 
+}
+
+/* My Styles */
+#qout,#welcome {
+  text-align: center;
+}
+
+#primary-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+}
+
+
+.poster-image {
+  width: 200px;
+  height: 200px;
+}
+
+.poster {
+  margin: 20px;
+}
+
+.list {
+  display: flex; /* allows us to use Flexbox */
+  align-items: center;
+  justify-content: center;
 }
