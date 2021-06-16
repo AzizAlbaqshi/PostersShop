@@ -1,10 +1,21 @@
 import { PostersWrapper, PosterImage, Text } from "../styles";
+import DeleteButton from "./Buttons/DeleteButton";
 const PostersItem = (props) => {
   return (
-    <PostersWrapper key={props.id}>
-      <PosterImage src={props.image} />
-      <Text>{props.name}</Text>
-      <Text>{props.price} KD</Text>
+    <PostersWrapper key={props.poster.id}>
+      <PosterImage
+        src={props.poster.image}
+        onClick={() => props.setPoster(props.poster)}
+      />
+
+      <Text>{props.poster.name}</Text>
+      <Text>{props.poster.price} KD</Text>
+
+      <DeleteButton
+        posterDelete={props.posterDelete}
+        posterId={props.poster.id}
+        setPoster={props.setPoster}
+      />
     </PostersWrapper>
   );
 };

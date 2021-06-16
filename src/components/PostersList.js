@@ -4,23 +4,24 @@ import { ListWrapper } from "../styles";
 import PostersItem from "./PostersItem";
 import SearchBar from "./SearchBar";
 
-const PostersList = () => {
+const PostersList = (props) => {
   const [query, setQuery] = useState("");
-  const filterPosters = posters.filter((poster) => poster.name.includes(query));
 
-  const postersList = filterPosters.map((poster) => (
-    <PostersItem
-      id={poster.id}
-      name={poster.name}
-      price={poster.price}
-      image={poster.image}
-    />
-  ));
+  const postersList = props.posters
+    .filter((poster) => poster.name.toLowerCase().includes(query.toLowerCase()))
+    .map((poster) => (
+      <PostersItem
+        setPoster={props.setPoster}
+        poster={poster}
+        key={poster.id}
+        posterDelete={props.posterDelete}
+      />
+    ));
 
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{postersList}</ListWrapper>;
+      <ListWrapper>{postersList}</ListWrapper>
     </div>
   );
 };
