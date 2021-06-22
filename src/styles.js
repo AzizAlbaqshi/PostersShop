@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -5,6 +6,23 @@ body {
     background-color: ${(props) => props.theme.backgroundColor};
     color: ${(props) => props.theme.mainColor};
 }
+`;
+
+export const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+    margin-right: 20px;
+  }
+
+  p {
+    vertical-align: middle;
+  }
 `;
 
 export const Title = styled.h1`
@@ -30,6 +48,18 @@ export const ListWrapper = styled.div`
 
 export const PostersWrapper = styled.div`
   margin: 20px;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+  p {
+    text-align: center;
+
+    &.cookie-price {
+      color: ${(props) => props.theme.mainColor};
+    }
+  }
 `;
 
 export const PosterImage = styled.img`
@@ -57,20 +87,23 @@ export const SearchBarStyled = styled.input`
   width: 40%;
 `;
 
-export const DetailWrapper = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+export const NavStyled = styled.nav`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const Logo = styled(Link)`
+  padding: 0.75em;
 
   img {
-    width: 40%;
-    float: Left;
-    margin-right: 20px;
+    width: 8rem;
   }
+`;
 
-  p {
-    vertical-align: middle;
+export const NavLinkStyled = styled(NavLink)`
+  margin: 10px;
+
+  &.active {
+    color: ${(props) => props.theme.red};
   }
 `;
 

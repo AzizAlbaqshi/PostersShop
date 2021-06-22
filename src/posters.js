@@ -2,6 +2,7 @@ const posters = [
   {
     id: 1,
     name: "Iron Man poster",
+    Slug: "iron-man-poster",
     price: 12,
     description: " bla bla bla bla bla bla blaaaa blaaaaa bla ",
     image:
@@ -10,6 +11,7 @@ const posters = [
   {
     id: 2,
     name: "Hulk poster",
+    Slug: "hulk-poster",
     price: 12,
     description: " bla bla bla bla bla bla blaaaa blaaaaa bla ",
     image:
@@ -18,6 +20,7 @@ const posters = [
   {
     id: 3,
     name: "captain america poster",
+    Slug: "captain-america-poster",
     price: 12,
     description: " bla bla bla bla bla bla blaaaa blaaaaa bla ",
     image:
@@ -26,6 +29,7 @@ const posters = [
   {
     id: 4,
     name: "Thor poster",
+    Slug: "thor-poster",
     price: 12,
     description: " bla bla bla bla bla bla blaaaa blaaaaa bla ",
     image:
