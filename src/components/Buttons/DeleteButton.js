@@ -1,9 +1,9 @@
 import { DeleteB } from "../../styles";
+import posterStore from "../../stores/posterStore";
 
 const DeleteButton = (props) => {
   const handleDelete = () => {
-    props.posterDelete(props.posterId);
-    props.setPoster(null);
+    posterStore.posterDelete(props.posterId);
   };
   return <DeleteB onClick={handleDelete}>Delete</DeleteB>;
 };

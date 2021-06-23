@@ -1,22 +1,17 @@
 import { useState } from "react";
-import posters from "../posters";
+
 import { ListWrapper } from "../styles";
 import PostersItem from "./PostersItem";
 import SearchBar from "./SearchBar";
+import posterStore from "../stores/posterStore";
+import { observer } from "mobx-react";
 
-const PostersList = (props) => {
+const PostersList = () => {
   const [query, setQuery] = useState("");
 
-  const postersList = props.posters
+  const postersList = posterStore.posters
     .filter((poster) => poster.name.toLowerCase().includes(query.toLowerCase()))
-    .map((poster) => (
-      <PostersItem
-        setPoster={props.setPoster}
-        poster={poster}
-        key={poster.id}
-        posterDelete={props.posterDelete}
-      />
-    ));
+    .map((poster) => <PostersItem poster={poster} key={poster.id} />);
 
   return (
     <div>
@@ -26,4 +21,4 @@ const PostersList = (props) => {
   );
 };
 
-export default PostersList;
+export default observer(PostersList);

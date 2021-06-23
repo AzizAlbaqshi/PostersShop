@@ -1,3 +1,5 @@
+import { observer } from "mobx-react";
+
 const posters = [
   {
     id: 1,
@@ -37,4 +39,4 @@ const posters = [
   },
 ];
 
-export default posters;
+export default observer(posters);

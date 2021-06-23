@@ -1,5 +1,5 @@
 import "./App.css";
-import posters from "./posters";
+
 import PostersList from "./components/PostersList";
 import { GlobalStyle } from "./styles";
 
@@ -28,32 +28,9 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
 
-  const [_posters, setPosters] = useState(posters);
-
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
     else setCurrentTheme("light");
-  };
-
-  // const setView = () => {
-  //   return poster ? (
-  //     <PostersDetail
-  //       poster={poster}
-  //       setPoster={setPoster}
-  //       posterDelete={posterDelete}
-  //     />
-  //   ) : (
-  //     <PostersList
-  //       setPoster={setPoster}
-  //       posters={_posters}
-  //       posterDelete={posterDelete}
-  //     />
-  //   );
-  // };
-
-  const posterDelete = (posterId) => {
-    const updatedPosters = _posters.filter((poster) => poster.id !== posterId);
-    setPosters(updatedPosters);
   };
 
   return (
@@ -65,10 +42,10 @@ function App() {
         {/* {setView()} */}
         <Switch>
           <Route path="/posters/:posterSlug">
-            <PostersDetail posters={_posters} posterDelete={posterDelete} />
+            <PostersDetail />
           </Route>
           <Route path="/posters">
-            <PostersList posters={_posters} posterDelete={posterDelete} />
+            <PostersList />
           </Route>
           <Route exact path="/">
             <Home />
