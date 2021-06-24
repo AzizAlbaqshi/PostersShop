@@ -24,4 +24,4 @@ const PostersDetail = () => {
   );
 };
 
-export default observer(PostersDetail);
+export default PostersDetail;

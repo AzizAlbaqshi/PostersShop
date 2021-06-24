@@ -37,7 +37,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
-        <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+        {/* <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} /> */}
 
         {/* {setView()} */}
         <Switch>

@@ -7,6 +7,7 @@ import posterStore from "../stores/posterStore";
 import { observer } from "mobx-react";
 
 const PostersList = () => {
+  return <p>fkdjfkjd</p>;
   const [query, setQuery] = useState("");
 
   const postersList = posterStore.posters
@@ -21,4 +22,4 @@ const PostersList = () => {
   );
 };
 
-export default observer(PostersList);
+export default PostersList;
