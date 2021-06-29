@@ -1,25 +1,21 @@
 import { PostersWrapper, PosterImage, Text } from "../styles";
 import DeleteButton from "./Buttons/DeleteButton";
+import UpdateButton from "./Buttons/UpdateButton";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 const PostersItem = (props) => {
   return (
     <PostersWrapper>
       <Link to={`/posters/${props.poster.slug}`}>
-        <PosterImage
-          src={props.poster.image}
-          onClick={() => props.setPoster(props.poster)}
-        />
+        <PosterImage src={props.poster.image} />
       </Link>
       <Text>{props.poster.name}</Text>
       <Text>{props.poster.price} KD</Text>
-      <DeleteButton
-        posterDelete={props.posterDelete}
-        posterId={props.poster.id}
-        setPoster={props.setPoster}
-      />
+      <UpdateButton poster={props.poster} />
+      <DeleteButton posterId={props.poster.id} />
     </PostersWrapper>
   );
 };
 
-export default PostersItem;
+export default observer(PostersItem);

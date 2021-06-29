@@ -7,7 +7,7 @@ import posterStore from "../stores/posterStore";
 const PostersDetail = () => {
   const posterSlug = useParams().posterSlug;
   const poster = posterStore.posters.find(
-    (poster) => poster.Slug === posterSlug
+    (poster) => poster.slug === posterSlug
   );
 
   if (!poster) return <Redirect to="/posters" />;
@@ -24,4 +24,4 @@ const PostersDetail = () => {
   );
 };
 
-export default PostersDetail;
+export default observer(PostersDetail);

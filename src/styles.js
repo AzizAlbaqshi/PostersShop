@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import { AiFillFire } from "react-icons/ai";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -110,4 +111,38 @@ export const NavLinkStyled = styled(NavLink)`
 export const DeleteB = styled.div`
   text-align: center;
   color: ${(props) => props.theme.red};
+`;
+
+export const AiFillFireStyled = styled(AiFillFire)`
+  color: ${(props) => props.theme.mainColor};
+  margin-left: 80%;
+`;
+
+export const CreateButtonStyled = styled.button`
+  /* .button { */
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  /* }
+
+  .button5:hover {
+    background-color: #555555;
+    color: white;
+  } */
+`;
+
+export const UpdateButtonStyled = styled.p`
+  color: ${(props) => props.theme.pink};
 `;
