@@ -21,17 +21,31 @@ class PosterStore {
     }
   };
 
-  posterDelete = (posterId) => {
-    const updatedPosters = this.posters.filter(
-      (poster) => poster.id !== posterId
-    );
-    this.posters = updatedPosters;
+  posterDelete = async (posterId) => {
+    try {
+      await axios.delete(`http://localhost:8000/posters/${posterId}`);
+      const updatedPosters = this.posters.filter(
+        (poster) => poster.id !== posterId
+      );
+      this.posters = updatedPosters;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  posterCreate = (newPoster) => {
-    newPoster.id = this.posters.length + 1;
-    newPoster.slug = slugify(newPoster.name);
-    this.posters.push(newPoster);
+  posterCreate = async (newPoster) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/posters",
+        newPoster
+      );
+      this.posters.push(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+    // newPoster.id = this.posters.length + 1;
+    // newPoster.slug = slugify(newPoster.name);
+    // this.posters.push(newPoster);
   };
 
   posterUpdate = (updatePoster) => {
