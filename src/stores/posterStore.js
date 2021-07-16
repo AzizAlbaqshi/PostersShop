@@ -1,6 +1,6 @@
 // import posters from "../posters";
 import { makeAutoObservable } from "mobx";
-import slugify from "react-slugify";
+
 import axios from "axios";
 
 class PosterStore {
@@ -35,27 +35,34 @@ class PosterStore {
 
   posterCreate = async (newPoster) => {
     try {
+      const formData = new FormData();
+      for (const key in newPoster) formData.append(key, newPoster[key]);
+
       const response = await axios.post(
         "http://localhost:8000/posters",
-        newPoster
+        formData
       );
       this.posters.push(response.data);
     } catch (error) {
       console.error(error);
     }
-    // newPoster.id = this.posters.length + 1;
-    // newPoster.slug = slugify(newPoster.name);
-    // this.posters.push(newPoster);
   };
 
-  posterUpdate = (updatePoster) => {
-    const poster = this.posters.find((poster) => poster.id === updatePoster.id);
-    poster.name = updatePoster.name;
-    poster.price = updatePoster.price;
-    poster.description = updatePoster.description;
-    poster.image = updatePoster.image;
-
-    poster.slug = slugify(updatePoster.name);
+  posterUpdate = async (updatePoster) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatePoster) formData.append(key, updatePoster[key]);
+      const response = await axios.put(
+        `http://localhost:8000/posters/${updatePoster.id}`,
+        formData
+      );
+      const poster = this.posters.find(
+        (poster) => poster.id === response.data.id
+      );
+      for (const key in poster) poster[key] = response.data[key];
+    } catch (error) {
+      console.error(error);
+    }
   };
 }
 

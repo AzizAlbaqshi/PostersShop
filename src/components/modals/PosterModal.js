@@ -20,6 +20,10 @@ const PosterModal = (props) => {
     setPoster({ ...poster, [event.target.name]: event.target.value });
   };
 
+  const handleImage = (event) => {
+    setPoster({ ...poster, image: event.target.files[0] });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (props.oldPoster) posterStore.posterUpdate(poster);
@@ -72,10 +76,9 @@ const PosterModal = (props) => {
             <label>Image</label>
             <input
               className="form-control"
-              type="text"
-              onChange={handleChange}
+              type="file"
+              onChange={handleImage}
               name="image"
-              value={poster.image}
             />
           </div>
           <CreateButtonStyled>
