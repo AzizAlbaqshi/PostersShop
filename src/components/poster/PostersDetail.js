@@ -1,8 +1,8 @@
-import { DetailWrapper } from "../styles";
-import DeleteButton from "./Buttons/DeleteButton";
+import { DetailWrapper } from "../../styles";
+import DeleteButton from "../Buttons/DeleteButton";
 import { useParams, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import posterStore from "../stores/posterStore";
+import posterStore from "../../stores/posterStore";
 
 const PostersDetail = () => {
   const posterSlug = useParams().posterSlug;

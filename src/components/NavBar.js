@@ -24,6 +24,9 @@ const NavBar = (props) => {
         <NavLinkStyled to="/posters" className="nav-item">
           Posters
         </NavLinkStyled>
+        <NavLinkStyled to="/stores" className="nav-item">
+          Posters Stores
+        </NavLinkStyled>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="#">

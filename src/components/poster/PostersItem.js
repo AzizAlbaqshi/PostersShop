@@ -1,6 +1,6 @@
-import { PostersWrapper, PosterImage, Text } from "../styles";
-import DeleteButton from "./Buttons/DeleteButton";
-import UpdateButton from "./Buttons/UpdateButton";
+import { PostersWrapper, PosterImage, Text } from "../../styles";
+import DeleteButton from "../Buttons/DeleteButton";
+import UpdateButton from "../Buttons/UpdateButton";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 

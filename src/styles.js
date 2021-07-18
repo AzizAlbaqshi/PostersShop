@@ -143,6 +143,15 @@ export const CreateButtonStyled = styled.button`
   } */
 `;
 
+export const StoreItemImage = styled.img`
+  width: 15em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  justify-content: center;
+`;
+
 export const UpdateButtonStyled = styled.p`
   color: ${(props) => props.theme.pink};
 `;

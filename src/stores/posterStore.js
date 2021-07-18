@@ -52,18 +52,20 @@ class PosterStore {
     try {
       const formData = new FormData();
       for (const key in updatePoster) formData.append(key, updatePoster[key]);
-      const response = await axios.put(
+      const rezponse = await axios.put(
         `http://localhost:8000/posters/${updatePoster.id}`,
         formData
       );
       const poster = this.posters.find(
-        (poster) => poster.id === response.data.id
+        (poster) => poster.id === rezponse.data.id
       );
-      for (const key in poster) poster[key] = response.data[key];
+      for (const key in poster) poster[key] = rezponse.data[key];
     } catch (error) {
       console.error(error);
     }
   };
+  getPosterById = (PosterId) =>
+    this.posters.find((poster) => poster.id === PosterId);
 }
 
 const posterStore = new PosterStore();

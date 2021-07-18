@@ -1,16 +1,18 @@
 import "./App.css";
 
-import PostersList from "./components/PostersList";
+import PostersList from "./components/poster/PostersList";
 import { GlobalStyle } from "./styles";
-
+import { observer } from "mobx-react";
 import React from "react";
 import { Switch, Route } from "react-router";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-
+import StoreList from "./components/store/StoreList";
+import posterStore from "./stores/posterStore";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
-import PostersDetail from "./components/PostersDetail";
+import PostersDetail from "./components/poster/PostersDetail";
+import StoreDetail from "./components/store/StoreDetail";
 
 const theme = {
   light: {
@@ -45,7 +47,13 @@ function App() {
             <PostersDetail />
           </Route>
           <Route path="/posters">
-            <PostersList />
+            <PostersList posters={posterStore.posters} />
+          </Route>
+          <Route path="/stores/:storeSlug">
+            <StoreDetail />
+          </Route>
+          <Route path="/stores">
+            <StoreList />
           </Route>
           <Route exact path="/">
             <Home />
@@ -56,4 +64,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
