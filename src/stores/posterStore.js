@@ -1,11 +1,12 @@
 // import posters from "../posters";
 import { makeAutoObservable } from "mobx";
-
+import storeStore from "./storeStore";
 import axios from "axios";
 
 class PosterStore {
   // posters = posters;
   posters = [];
+  loading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -15,7 +16,7 @@ class PosterStore {
     try {
       const response = await axios.get("http://localhost:8000/posters");
       this.posters = response.data;
-      console.log(this.posters);
+      this.loading = false;
     } catch (error) {
       console.error("fetchPosters:", error);
     }
@@ -23,26 +24,29 @@ class PosterStore {
 
   posterDelete = async (posterId) => {
     try {
+      storeStore.loading = true;
       await axios.delete(`http://localhost:8000/posters/${posterId}`);
       const updatedPosters = this.posters.filter(
         (poster) => poster.id !== posterId
       );
       this.posters = updatedPosters;
+      storeStore.fetchStores();
     } catch (error) {
       console.error(error);
     }
   };
 
-  posterCreate = async (newPoster) => {
+  posterCreate = async (newPoster, store) => {
     try {
       const formData = new FormData();
       for (const key in newPoster) formData.append(key, newPoster[key]);
 
       const response = await axios.post(
-        "http://localhost:8000/posters",
+        `http://localhost:8000/stores/${store.id}/posters`,
         formData
       );
       this.posters.push(response.data);
+      store.posters.push({ id: response.data.id });
     } catch (error) {
       console.error(error);
     }

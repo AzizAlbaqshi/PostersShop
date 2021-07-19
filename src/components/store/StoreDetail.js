@@ -17,7 +17,7 @@ const StoreDetail = () => {
         <img src={store.image} alt={store.name} />
       </DetailWrapper>
 
-      <PostersList posters={posters} />
+      <PostersList posters={posters} store={store} />
     </>
   );
 };

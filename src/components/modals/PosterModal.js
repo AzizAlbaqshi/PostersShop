@@ -25,10 +25,9 @@ const PosterModal = (props) => {
   };
 
   const handleSubmit = (event) => {
-    console.log("hahahahaahaahahahahahhahahahahah");
     event.preventDefault();
     if (props.oldPoster) posterStore.posterUpdate(poster);
-    else posterStore.posterCreate(poster);
+    else posterStore.posterCreate(poster, props.store);
     props.closeModal();
   };
 

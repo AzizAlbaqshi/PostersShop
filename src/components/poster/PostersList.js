@@ -1,15 +1,13 @@
 import { useState } from "react";
-
 import { ListWrapper, AiFillFireStyled } from "../../styles";
 import PostersItem from "./PostersItem";
 import SearchBar from "../SearchBar";
 import { observer } from "mobx-react";
 import PosterModal from "../modals/PosterModal";
 
-const PostersList = ({ posters }) => {
-  const [isOpen, setIsOpen] = useState("");
+const PostersList = ({ posters, store }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
-
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
@@ -20,7 +18,7 @@ const PostersList = ({ posters }) => {
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <PosterModal isOpen={isOpen} closeModal={closeModal} />
+      <PosterModal isOpen={isOpen} closeModal={closeModal} store={store} />
       <AiFillFireStyled
         size="5em"
         class="button, button5"

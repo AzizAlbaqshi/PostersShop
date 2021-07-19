@@ -3,6 +3,7 @@ import axios from "axios";
 
 class StoreStore {
   stores = [];
+  loading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -12,7 +13,7 @@ class StoreStore {
     try {
       const response = await axios.get("http://localhost:8000/stores");
       this.stores = response.data;
-      console.log(this.stores);
+      this.loading = false;
     } catch (error) {
       console.error("fetchStores:", error);
     }
@@ -27,12 +28,12 @@ class StoreStore {
         "http://localhost:8000/stores",
         formData
       );
+      response.data.posters = [];
       this.stores.push(response.data);
     } catch (error) {
       console.error(error);
     }
   };
-  getPosterById = (posterId) => posterId.id === posterId;
 }
 
 const storeStore = new StoreStore();

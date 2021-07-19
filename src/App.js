@@ -1,18 +1,13 @@
 import "./App.css";
-
-import PostersList from "./components/poster/PostersList";
 import { GlobalStyle } from "./styles";
 import { observer } from "mobx-react";
 import React from "react";
-import { Switch, Route } from "react-router";
-import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import StoreList from "./components/store/StoreList";
-import posterStore from "./stores/posterStore";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
-import PostersDetail from "./components/poster/PostersDetail";
-import StoreDetail from "./components/store/StoreDetail";
+import Routes from "./components/Routes";
+import storeStore from "./stores/storeStore";
+import posterStore from "./stores/posterStore";
 
 const theme = {
   light: {
@@ -40,25 +35,11 @@ function App() {
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-
-        {/* {setView()} */}
-        <Switch>
-          <Route path="/posters/:posterSlug">
-            <PostersDetail />
-          </Route>
-          <Route path="/posters">
-            <PostersList posters={posterStore.posters} />
-          </Route>
-          <Route path="/stores/:storeSlug">
-            <StoreDetail />
-          </Route>
-          <Route path="/stores">
-            <StoreList />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
+        {storeStore.loading || posterStore.loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <Routes />
+        )}
       </ThemeProvider>
     </div>
   );
