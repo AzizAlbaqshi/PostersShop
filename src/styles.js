@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { AiFillFire } from "react-icons/ai";
-
+import { FaSignOutAlt } from "react-icons/fa";
 export const GlobalStyle = createGlobalStyle`
 body {
     background-color: ${(props) => props.theme.backgroundColor};
@@ -154,4 +154,19 @@ export const StoreItemImage = styled.img`
 
 export const UpdateButtonStyled = styled.p`
   color: ${(props) => props.theme.pink};
+`;
+
+export const AuthButtonStyled = styled.button`
+  font-size: 1em;
+  padding: 0.25em 1em;
+  margin-left: 0.5em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.mainColor};
+`;
+
+export const SignoutStyled = styled(FaSignOutAlt)`
+  color: ${(props) => props.theme.red};
+  size: "2em";
+  margin: 5px;
 `;

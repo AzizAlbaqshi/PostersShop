@@ -3,6 +3,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 import UpdateButton from "../Buttons/UpdateButton";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
+import authStore from "../../stores/authStore";
 
 const PostersItem = (props) => {
   return (
@@ -12,8 +13,12 @@ const PostersItem = (props) => {
       </Link>
       <Text>{props.poster.name}</Text>
       <Text>{props.poster.price} KD</Text>
-      <UpdateButton poster={props.poster} />
-      <DeleteButton posterId={props.poster.id} />
+      {authStore.user && (
+        <>
+          <UpdateButton poster={props.poster} />
+          <DeleteButton posterId={props.poster.id} />
+        </>
+      )}
     </PostersWrapper>
   );
 };

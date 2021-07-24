@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class StoreStore {
   stores = [];
@@ -11,7 +11,7 @@ class StoreStore {
 
   fetchStores = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/stores");
+      const response = await instance.get("/stores");
       this.stores = response.data;
       this.loading = false;
     } catch (error) {
@@ -24,10 +24,7 @@ class StoreStore {
       const formData = new FormData();
       for (const key in newStore) formData.append(key, newStore[key]);
 
-      const response = await axios.post(
-        "http://localhost:8000/stores",
-        formData
-      );
+      const response = await instance.post("/stores", formData);
       response.data.posters = [];
       this.stores.push(response.data);
     } catch (error) {

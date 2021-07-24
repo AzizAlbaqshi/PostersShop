@@ -4,6 +4,7 @@ import PostersItem from "./PostersItem";
 import SearchBar from "../SearchBar";
 import { observer } from "mobx-react";
 import PosterModal from "../modals/PosterModal";
+import authStore from "../../stores/authStore";
 
 const PostersList = ({ posters, store }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,11 +20,13 @@ const PostersList = ({ posters, store }) => {
     <div>
       <SearchBar setQuery={setQuery} />
       <PosterModal isOpen={isOpen} closeModal={closeModal} store={store} />
-      <AiFillFireStyled
-        size="5em"
-        class="button, button5"
-        onClick={openModal}
-      />
+      {authStore.user && (
+        <AiFillFireStyled
+          size="5em"
+          class="button, button5"
+          onClick={openModal}
+        />
+      )}
       <ListWrapper>{postersList}</ListWrapper>
     </div>
   );

@@ -5,6 +5,7 @@ import SearchBar from "../SearchBar";
 import { observer } from "mobx-react";
 import { AiFillFireStyled } from "../../styles";
 import StoreModal from "../modals/StoreModal";
+import authStore from "../../stores/authStore";
 
 const StoreList = () => {
   const [query, setQuery] = useState("");
@@ -19,12 +20,13 @@ const StoreList = () => {
     <div>
       <h1> Poster Stores</h1>
       <SearchBar setQuery={setQuery} />
-
-      <AiFillFireStyled
-        size="5em"
-        class="button, button5"
-        onClick={openModal}
-      />
+      {authStore.user && (
+        <AiFillFireStyled
+          size="5em"
+          class="button, button5"
+          onClick={openModal}
+        />
+      )}
       <StoreModal isOpen={isOpen} closeModal={closeModal} />
       {stores}
     </div>
